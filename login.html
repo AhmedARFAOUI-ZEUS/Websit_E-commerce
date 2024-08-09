@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .input_field {
+            margin-bottom: 15px;
+        }
+        .input_field input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d0d0d;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #0c0c0c;
+        }
+        .error-message {
+            color:orange;
+            text-align: center;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div id="error-message" class="error-message"></div>
+        <form id="loginForm" onsubmit="return validateLogin();">
+            <div class="input_field">
+                <input type="text" id="username" placeholder="Email or Name">
+            </div>
+            <div class="input_field">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const email = "admin@gmail.com";
+            const name = "admin123";
+            const password = "admin123";
+
+            const inputUsername = document.getElementById('username').value.trim();
+            const inputPassword = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            if ((inputUsername === email || inputUsername === name) && inputPassword === password) {
+                alert('Connexion approuvée!');
+                window.location.href = 'index.html'; // Redirect to index.html
+                return false; // Prevent form submission
+            } else {
+                errorMessage.textContent = 'Invalid credentials. Please try again.';
+                errorMessage.style.display = 'block';
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</body>
+</html>

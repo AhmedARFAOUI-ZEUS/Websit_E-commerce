@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Basic Meta Tags -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Eflyer</title>
+      <!-- CSS Links -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link rel="stylesheet" href="style.css"> 
+   </head>
+    <body>
+        <div class="wrapper"> 
+            <h2><b>Contact</b></h2>
+            <div id="error_message"></div> 
+            <form id="myform" onsubmit="return validateForm();"> 
+                <div class="input_field"> 
+                    <input type="text" placeholder="Nom" id="name"> 
+                </div> 
+                <div class="input_field"> 
+                    <input type="text" placeholder="Prénom" id="prenom"> 
+                </div> 
+                <div class="input_field"> 
+                    <input type="text" placeholder="Télèphone" id="telephone"> 
+                </div>
+                <div class="input_field"> 
+                    <input type="text" placeholder="E-mail" id="email"> 
+                </div> 
+                <div class="input_field"> 
+                    <input type="password" placeholder="Password" id="password"> 
+                </div> 
+                <div class="btn" align="center"> 
+                    <button type="submit" class="buynow_bt" style="background-color: #000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">SEND</button>
+                </div>
+            </form> 
+        </div> 
+
+        <!-- JavaScript Validation -->
+        <script>
+            function validateForm() {
+                // Get form elements
+                const name = document.getElementById('name').value.trim();
+                const prenom = document.getElementById('prenom').value.trim();
+                const telephone = document.getElementById('telephone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                // Email validation regex
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+                // Error message initialization
+                let errorMessage = '';
+
+                // Form validation logic
+                if (name === '') errorMessage += 'Nom is required.\n';
+                if (prenom === '') errorMessage += 'Prénom is required.\n';
+                if (telephone === '') errorMessage += 'Télèphone is required.\n';
+                if (email === '') {
+                    errorMessage += 'E-mail is required.\n';
+                } else if (!emailPattern.test(email)) {
+                    errorMessage += 'E-mail is invalid.\n';
+                }
+                if (password === '') errorMessage += 'Password is required.\n';
+
+                // Show error message if any
+                if (errorMessage !== '') {
+                    alert(errorMessage);
+                    return false; // Prevent form submission
+                }
+
+                alert('Form submitted successfully!');
+                return true; // Allow form submission
+            }
+        </script> 
+    </body>
+</html>
